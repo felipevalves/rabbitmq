@@ -1,4 +1,6 @@
-import br.com.felipe.rabbitmq.RabbitPublisher
+package br.com.felipe.rabbitmq.work
+
+import br.com.felipe.rabbitmq.workqueues.RabbitPublisher
 import org.junit.Test
 
 class TestPublisher {
@@ -12,10 +14,10 @@ class TestPublisher {
 
 
     @Test
-    fun test_send_100_messages() {
+    fun test_send_n_messages() {
         val send = RabbitPublisher()
 
-        for (i in 0..1000)
+        for (i in 1..20)
             send.send(i)
 
         org.junit.Assert.assertTrue(true)
