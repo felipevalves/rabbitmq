@@ -13,9 +13,9 @@ class RabbitPublisher {
     private val QUEUE_NAME = "hello"
 
 
-    fun send(): String {
+    fun send(index: Int): String {
 
-        val message = "{\"message\":\"Hello World!! ${LocalDateTime.now()}\"}"
+        val message = "{\"message\":\" $index Hello World from kotlin!! ${LocalDateTime.now()}\"}"
 
         try {
             val factory = ConnectionFactory()
@@ -29,7 +29,7 @@ class RabbitPublisher {
                 val channel = it.createChannel()
                 channel.queueDeclare(QUEUE_NAME, false, false, false, null)
                 channel.basicPublish("", QUEUE_NAME, null, message.toByteArray(Charset.defaultCharset()))
-                logger.info("Message Sent! %message ")
+                logger.info("Message Sent! $message ")
             }
         }
         catch (e: Exception ) {
@@ -40,5 +40,5 @@ class RabbitPublisher {
         return "OK"
 
     }
-
 }
+
