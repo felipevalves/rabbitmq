@@ -40,7 +40,7 @@ class RabbitConsumer {
 
         }
         catch (e: Exception ) {
-            logger.error("Error to send message ", e)
+            logger.error("Error to send message: ", e)
         }
 
     }
