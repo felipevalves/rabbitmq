@@ -7,15 +7,15 @@ import java.nio.charset.Charset
 import java.time.LocalDateTime
 
 
-class RabbitSend {
+class RabbitPublisher {
 
-    private val logger: Logger = LoggerFactory.getLogger(RabbitSend::class.java)
+    private val logger: Logger = LoggerFactory.getLogger(RabbitPublisher::class.java)
     private val QUEUE_NAME = "hello"
 
 
     fun send(): String {
 
-        val message = "My Message ${LocalDateTime.now()}"
+        val message = "{\"message\":\"Hello World!! ${LocalDateTime.now()}\"}"
 
         try {
             val factory = ConnectionFactory()
